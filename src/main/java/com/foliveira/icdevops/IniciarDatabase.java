@@ -17,7 +17,7 @@ public class IniciarDatabase {
     CommandLineRunner initDatabase(ItemRepository repository) {
 
         return args -> {
-            log.info("\nCarregando itens " + repository.save(
+            log.info("\nCarregando " + repository.save(
                 new Item(
                     "Biscoito",
                     1.99,

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.foliveira.icdevops.excecao.ItemNotFoundException;
@@ -35,7 +34,6 @@ public class ItemController {
     }
 
     @GetMapping("/item")
-    @ResponseBody
     public CollectionModel<EntityModel<Item>> buscaTodosOsItens() {
         List<EntityModel<Item>> itens = repository.findAll().stream()
             .map(assembler::toModel)
@@ -46,7 +44,6 @@ public class ItemController {
     }
     
     @GetMapping("/item/{id}")
-    @ResponseBody
     public EntityModel<Item> buscaItemPorId(@PathVariable Long id) {
         Item item = repository.findById(id)
             .orElseThrow(() -> new ItemNotFoundException(id));
@@ -54,7 +51,6 @@ public class ItemController {
     }
 
     @PostMapping("/item")
-    @ResponseBody
     public ResponseEntity<?> novoItem(@RequestBody Item novoItem) {
         EntityModel<Item> entityModel = assembler.toModel(repository.save(novoItem));
         return ResponseEntity.created(
@@ -63,7 +59,6 @@ public class ItemController {
     }
 
     @PutMapping("/item/{id}")
-    @ResponseBody
     public ResponseEntity<?> editarItem(@RequestBody Item novoItem, @PathVariable Long id) {
         Item itemEditado = repository.findById(id)
             .map(item -> {
@@ -83,7 +78,6 @@ public class ItemController {
     }
 
     @DeleteMapping("/item/{id}")
-    @ResponseBody
     public ResponseEntity<?> deletaItem(@PathVariable Long id) {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
