@@ -12,7 +12,7 @@
 	<artifactId>icdevops</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>trabalho_final</name>
+	<name>icdevops</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

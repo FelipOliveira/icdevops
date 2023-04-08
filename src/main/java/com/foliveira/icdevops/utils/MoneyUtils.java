@@ -1,4 +1,4 @@
-package com.foliveira.utils;
+package com.foliveira.icdevops.utils;
 
 import javax.money.CurrencyUnit;
 import javax.money.Monetary;

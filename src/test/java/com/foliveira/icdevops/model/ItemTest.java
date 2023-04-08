@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.javamoney.moneta.Money;
 import org.junit.Test;
 
-import com.foliveira.utils.MoneyUtils;
+import com.foliveira.icdevops.utils.MoneyUtils;
 
 public class ItemTest {
     private Item item_1 = new Item(

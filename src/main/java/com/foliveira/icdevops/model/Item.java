@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 import org.javamoney.moneta.Money;
 
-import com.foliveira.utils.MoneyUtils;
+import com.foliveira.icdevops.utils.MoneyUtils;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

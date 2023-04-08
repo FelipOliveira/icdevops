@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Test;
 
-import com.foliveira.utils.MoneyUtils;
-
 public class MoneyUtilsTest {
     
     @Test
