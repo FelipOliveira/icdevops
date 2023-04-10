@@ -1,0 +1,43 @@
+stages:
+  - iac_validate
+  - iac_plan
+  - iac_apply
+
+default:
+  image:
+    name: hashicorp/terraform:latest
+    entrypoint:
+      - /usr/bin/env
+      - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  before_script:
+    - terraform init
+  cache:
+    key: terraform
+    paths:
+      - .terraform
+
+terraform_validate:
+  stage: iac_validate
+  script:
+    - terraform validate
+
+terraform_plan:
+  stage: iac_plan
+  script: 
+    - terraform plan --out plan
+  only:
+    refs:
+      - master
+  artifacts:
+    paths:
+      - plan
+
+terraform_apply:
+  stage: iac_apply
+  script:
+    - terraform apply --auto-approve plan
+  when: manual
+  allow_failure: false
+  only:
+    refs:
+      - master
